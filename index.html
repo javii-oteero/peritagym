@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#14171a" />
+    <title>PERITA Gym · Demo hotel</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="top">
+      <div class="brand">
+        <span class="mark">A</span>
+        <div>
+          <strong>PERITA <em>GYM</em></strong
+          ><small>HOTEL · WELLNESS CLUB</small>
+        </div>
+      </div>
+      <div class="topright">
+        <span class="demo">● DEMO INTERACTIVA</span
+        ><button id="reset" class="outline tiny">Reiniciar demo</button>
+      </div>
+    </header>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="section-title">PRESENTACIÓN</div>
+        <button class="nav active" data-page="dashboard">
+          ◉ &nbsp; Panel de control</button
+        ><button class="nav" data-page="access">
+          ▣ &nbsp; Control de acceso</button
+        ><button class="nav" data-page="members">♙ &nbsp; Suscripciones</button
+        ><button class="nav" data-page="guest">▤ &nbsp; Huéspedes</button
+        ><button class="nav" data-page="client">
+          ▧ &nbsp; Vista del socio
+        </button>
+        <div class="sidebottom">
+          <span class="live-dot"></span> Simulación local<br /><small
+            >Sin hardware ni cobros reales</small
+          >
+        </div>
+      </aside>
+      <main class="main">
+        <div class="page-heading">
+          <div>
+            <div class="eyebrow" id="crumb">OPERACIONES / RESUMEN</div>
+            <h1 id="pageTitle">Panel de control</h1>
+            <p id="pageDesc">
+              Ocupación y accesos del gimnasio en tiempo real (simulado).
+            </p>
+          </div>
+          <span class="pill">Un único punto de acceso</span>
+        </div>
+        <section class="page" id="dashboard">
+          <div class="metrics">
+            <article class="metric">
+              <small>AFORO ACTUAL</small>
+              <div class="metricbig">
+                <span id="metricTotal">0</span><span class="muted">/ 12</span>
+              </div>
+              <div class="progress"><span id="progressBar"></span></div>
+              <p id="metricStatus">Plazas disponibles</p>
+            </article>
+            <article class="metric">
+              <small>HUÉSPEDES DENTRO</small>
+              <div class="metricbig" id="metricGuests">0</div>
+              <p>Accesos temporales del hotel</p>
+            </article>
+            <article class="metric">
+              <small>SOCIOS DENTRO</small>
+              <div class="metricbig" id="metricMembers">0</div>
+              <p>Suscripciones verificadas</p>
+            </article>
+            <article class="metric">
+              <small>SOCIOS ACTIVOS</small>
+              <div class="metricbig" id="metricActive">0</div>
+              <p>Cuotas vigentes</p>
+            </article>
+          </div>
+          <div class="cols">
+            <article class="panel">
+              <div class="panelhead">
+                <h2>Ocupación del gimnasio</h2>
+                <span class="chip">EN VIVO · DEMO</span>
+              </div>
+              <div class="occupancy">
+                <div class="donut" id="donut">
+                  <div>
+                    <b id="donutValue">0</b><small>personas dentro</small>
+                  </div>
+                </div>
+                <div class="occupancytext">
+                  <h3 id="spaceText">Espacio disponible</h3>
+                  <p>Capacidad máxima configurada: <b>12 personas</b></p>
+                  <div class="legend">
+                    <span
+                      ><i class="square gold"></i> Socios
+                      <b id="legendMembers">0</b></span
+                    ><span
+                      ><i class="square dark"></i> Huéspedes
+                      <b id="legendGuests">0</b></span
+                    >
+                  </div>
+                  <button class="primary" data-goto="access">
+                    Simular entrada o salida →
+                  </button>
+                </div>
+              </div>
+            </article>
+            <article class="panel">
+              <div class="panelhead">
+                <h2>Actividad reciente</h2>
+                <span class="chip soft">REGISTRO</span>
+              </div>
+              <div id="recentLogs" class="loglist"></div>
+            </article>
+          </div>
+          <article class="panel">
+            <div class="panelhead">
+              <h2>Dos formas de controlar el acceso</h2>
+              <span class="chip soft">PARA PRESENTAR AL HOTEL</span>
+            </div>
+            <div class="solutiongrid">
+              <div>
+                <b>01 · Torno o puerta con lector</b>
+                <p>
+                  Puede validar el QR o la tarjeta de cada persona y registrar
+                  entradas y salidas. El lector debe ser compatible con la
+                  credencial elegida.
+                </p>
+              </div>
+              <div>
+                <b>02 · Tablet con escáner QR</b>
+                <p>
+                  Una opción sencilla junto a la puerta. Para leer tarjetas,
+                  la tablet necesitaría además un lector compatible.
+                </p>
+              </div>
+            </div>
+          </article>
+        </section>
+        <section class="page hidden" id="access">
+          <div class="cols">
+            <article class="panel">
+              <div class="panelhead">
+                <h2>Sistema de acceso</h2>
+                <span class="chip">ELIGE UNA OPCIÓN</span>
+              </div>
+              <p class="hint">
+                Elige qué equipo habría en la puerta. La app puede validar las
+                mismas credenciales en cualquiera de las dos opciones; aquí
+                solo simulamos la lectura, sin hardware real.
+              </p>
+              <div class="options">
+                <label
+                  ><input type="radio" name="mode" value="turnstile" /><span
+                    ><b>Torno o puerta con lector</b
+                    ><small
+                      >Valida QR y tarjetas con el lector adecuado y registra entradas y salidas.</small
+                    ></span
+                  ></label
+                ><label
+                  ><input type="radio" name="mode" value="tablet" checked /><span
+                    ><b>Tablet con escáner QR</b
+                    ><small
+                      >Junto a la puerta, sin torno. Para tarjetas hace falta añadir un lector compatible.</small
+                    ></span
+                  ></label
+                >
+              </div>
+              <div class="credential-guide">
+                <b>Credenciales que puede usar cada persona</b>
+                <ul>
+                  <li><strong>Socio:</strong> QR en la app o tarjeta del gimnasio.</li>
+                  <li><strong>Huésped:</strong> QR o tarjeta temporal entregada por el hotel.</li>
+                </ul>
+                <small>El equipo físico se elige según la credencial que se quiera leer.</small>
+              </div>
+              <div id="modeNote" class="notice"></div>
+            </article>
+            <article class="panel">
+              <div class="panelhead">
+                <h2>Simulador de acceso</h2>
+                <span class="chip">DEMO · SIN LECTOR REAL</span>
+              </div>
+              <div class="door">
+                <div class="door-icon">⇄</div>
+                <b id="doorTitle">TABLET EN LA PUERTA</b
+                ><small id="doorMode">Lector QR · entrada y salida</small>
+                <div class="door-count">
+                  <span id="doorCount">0</span> / 12 personas
+                </div>
+              </div>
+              <label class="field"
+                >Persona / credencial a simular
+                <select id="accessPerson"></select
+              ></label>
+              <div class="buttons">
+                <button class="primary" id="enter">+ Registrar entrada</button
+                ><button class="outline" id="leave">− Registrar salida</button>
+              </div>
+              <div class="notice" id="accessFeedback" aria-live="polite">
+                Elige una persona y registra su entrada o salida. La demo no escanea el QR ni lee tarjetas.
+              </div>
+            </article>
+          </div>
+          <article class="panel">
+            <div class="panelhead">
+              <h2>Personas actualmente dentro</h2>
+              <span class="chip soft" id="insideCount">0 PERSONAS</span>
+            </div>
+            <div id="insideList" class="list"></div>
+          </article>
+        </section>
+        <section class="page hidden" id="members">
+          <div class="plans" id="planCards"></div>
+          <div class="cols">
+            <article class="panel">
+              <div class="panelhead">
+                <h2>Base de datos de socios</h2>
+                <span class="chip soft" id="memberCount"></span>
+              </div>
+              <label class="field"
+                >Buscar socio
+                <input id="memberSearch" placeholder="Nombre o plan"
+              /></label>
+              <div id="memberList" class="list"></div>
+            </article>
+            <article class="panel">
+              <h2>Alta / renovación simulada</h2>
+              <form id="memberForm">
+                <label class="field"
+                  >Nombre completo<input
+                    id="newMemberName"
+                    required
+                    placeholder="Nombre del socio" /></label
+                ><label class="field"
+                  >Plan<select id="newMemberPlan">
+                    <option value="monthly">Mensual</option>
+                    <option value="quarterly">Trimestral</option>
+                    <option value="annual">Anual</option>
+                  </select></label
+                ><label class="field"
+                  >Código promocional (opcional)<input
+                    id="staffPromoCode"
+                    placeholder="Ej. BIENVENIDA" /></label
+                ><button class="primary full" type="submit">
+                  Crear socio y activar suscripción
+                </button>
+              </form>
+              <p class="hint">
+                Alta asistida por el personal. También se puede dar de alta
+                desde la vista del socio. No se realizan cobros reales.
+              </p>
+            </article>
+          </div>
+          <article class="panel">
+            <div class="panelhead">
+              <h2>Precios y promociones</h2>
+              <span class="chip">GESTIÓN DEL PANEL</span>
+            </div>
+            <p class="hint">
+              Los nuevos precios se aplican a las próximas altas y renovaciones;
+              no cambian lo que ya paga un socio. Las promociones se aplican al
+              introducir su código.
+            </p>
+            <form id="pricingForm" class="price-form">
+              <label class="field">Mensual (€)<input id="priceMonthly" type="number" min="0.01" step="0.01" required /></label>
+              <label class="field">Trimestral (€)<input id="priceQuarterly" type="number" min="0.01" step="0.01" required /></label>
+              <label class="field">Anual (€)<input id="priceAnnual" type="number" min="0.01" step="0.01" required /></label>
+              <button class="primary" type="submit">Guardar precios</button>
+            </form>
+            <div class="cols pricing-columns">
+              <div>
+                <h3>Crear promoción</h3>
+                <form id="promoForm">
+                  <label class="field">Nombre<input id="promoName" required placeholder="Ej. Bienvenida" /></label>
+                  <label class="field">Código<input id="promoCode" required placeholder="Ej. BIENVENIDA" /></label>
+                  <label class="field">Descuento (%)<input id="promoPercent" type="number" min="1" max="90" step="1" required value="10" /></label>
+                  <label class="field">Aplicar a<select id="promoPlan">
+                    <option value="all">Todos los planes</option>
+                    <option value="monthly">Mensual</option>
+                    <option value="quarterly">Trimestral</option>
+                    <option value="annual">Anual</option>
+                  </select></label>
+                  <div class="date-fields">
+                    <label class="field">Desde<input id="promoStart" type="date" required /></label>
+                    <label class="field">Hasta<input id="promoEnd" type="date" required /></label>
+                  </div>
+                  <button class="primary" type="submit">Crear promoción</button>
+                </form>
+              </div>
+              <div>
+                <h3>Promociones creadas</h3>
+                <div id="promoList" class="list"></div>
+              </div>
+            </div>
+          </article>
+        </section>
+        <section class="page hidden" id="guest">
+          <div class="cols">
+            <article class="panel">
+              <h2>Emitir pase temporal</h2>
+              <p class="hint">
+                El huésped no necesita instalar la aplicación ni aportar datos
+                personales al gimnasio. El pase usa un identificador interno y
+                una fecha de caducidad. Puedes imprimir un QR para entregárselo
+                en papel si no va a usar una tarjeta.
+              </p>
+              <form id="guestForm">
+                <label class="field"
+                  >Referencia opcional (habitación o alias)<input
+                    id="guestLabel"
+                    placeholder="Ej. Habitación 304" /></label
+                ><label class="field"
+                  >Duración del pase<select id="guestDuration">
+                    <option value="1">1 día</option>
+                    <option value="3">3 días</option>
+                    <option value="7">7 días</option>
+                  </select></label
+                ><button class="primary full" type="submit">
+                  Generar pase de huésped
+                </button>
+              </form>
+            </article>
+            <article class="panel">
+              <div class="panelhead">
+                <h2>Pases de huéspedes</h2>
+                <span class="chip soft" id="guestCount"></span>
+              </div>
+              <div id="guestList" class="list"></div>
+            </article>
+          </div>
+        </section>
+        <section class="page hidden" id="client">
+          <div class="phone">
+            <div class="phonehead">
+              <small>PERITA CLUB · ÁREA DE SOCIOS</small>
+            <h2 id="clientName">Hola, Laura</h2>
+              <span id="clientStatus" class="chip">SOCIO ACTIVO</span>
+            </div>
+            <div class="phonebody">
+              <div class="mini-card">
+                <small>AFORO EN DIRECTO · SIMULADO</small>
+                <div class="client-number"><b id="clientTotal">0</b> / 12</div>
+                <p id="clientSpaces">Plazas disponibles</p>
+              </div>
+              <div class="mini-card">
+                <small>MI SUSCRIPCIÓN</small>
+                <h3 id="clientPlan">Plan mensual</h3>
+                <div class="client-price" id="clientPrice">50 €</div>
+                <p id="clientExpiry">Válida hasta —</p>
+              </div>
+              <div class="mini-card center">
+                <small>MI CREDENCIAL DE ACCESO</small>
+                <div id="clientQr" class="real-qr" aria-label="Código QR de acceso"></div>
+                <p>QR de demostración · contiene un identificador, no abre una web</p>
+                <button class="primary full" id="clientEnter">
+                  Simular entrada</button
+                ><button class="outline full" id="clientLeave">
+                  Simular salida
+                </button>
+              </div>
+            </div>
+          </div>
+          <article class="panel client-signup" id="clientSignupPanel">
+            <h2>Hazte socio desde la app</h2>
+            <p class="hint">
+              Elige un plan y, si tienes uno, añade un código promocional. El
+              alta y el pago son simulados en esta demo.
+            </p>
+            <form id="clientSignupForm" class="signup-form">
+              <label class="field">Nombre completo<input id="clientSignupName" required placeholder="Tu nombre" /></label>
+              <label class="field">Plan<select id="clientSignupPlan">
+                <option value="monthly">Mensual</option>
+                <option value="quarterly">Trimestral</option>
+                <option value="annual">Anual</option>
+              </select></label>
+              <label class="field">Código promocional (opcional)<input id="clientPromoCode" placeholder="Ej. BIENVENIDA" /></label>
+              <button class="primary" type="submit">Crear mi suscripción</button>
+            </form>
+            <div id="signupFeedback" class="notice hidden" aria-live="polite"></div>
+          </article>
+        </section>
+        <footer>
+          Demo comercial PERITA Gym · Datos ficticios · Almacenamiento local en
+          este navegador · No conectada a sistemas reales
+        </footer>
+      </main>
+    </div>
+    <div class="toast hidden" id="toast" role="status"></div>
+    <section id="printTicket" class="print-ticket hidden" aria-label="Pase temporal de gimnasio">
+      <div class="ticket-brand">PERITA <span>GYM</span></div>
+      <p class="ticket-eyebrow">PASE TEMPORAL DE ACCESO</p>
+      <h1 id="ticketName"></h1>
+      <div id="ticketQr" class="ticket-qr"></div>
+      <p class="ticket-instruction">Presenta este código QR en el acceso al gimnasio.</p>
+      <p class="ticket-detail">Válido hasta <strong id="ticketExpiry"></strong></p>
+      <p class="ticket-code" id="ticketCode"></p>
+      <p class="ticket-note">Pase personal · No transferible · Demo</p>
+    </section>
+    <script src="app.js"></script>
+  </body>
+</html>
